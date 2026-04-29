@@ -1,23 +1,833 @@
 [
-  {"id":"k001","nama":"Warung Nasi Ampera","kategori":"Sunda","deskripsi":"Rumah makan Sunda legendaris dengan nasi timbel dan lauk lengkap.","alamat":"Jl. Trunojoyo No.62, Bandung","harga_per_orang":35000,"jam_operasional":"10:00 - 21:00","rating":4.5,"lat":-6.9050,"lng":107.6120,"tags":["sunda","nasi timbel","tradisional"]},
-  {"id":"k002","nama":"Sindang Reret","kategori":"Sunda","deskripsi":"Restoran Sunda premium di Lembang dengan suasana alam pegunungan.","alamat":"Jl. Raya Lembang No.123","harga_per_orang":60000,"jam_operasional":"10:00 - 22:00","rating":4.4,"lat":-6.8130,"lng":107.6160,"tags":["sunda","premium","lembang"]},
-  {"id":"k003","nama":"Batagor Kingsley","kategori":"Jajanan","deskripsi":"Batagor legendaris khas Bandung yang sudah terkenal sejak 1985.","alamat":"Jl. Burangrang No.12, Bandung","harga_per_orang":25000,"jam_operasional":"09:00 - 20:00","rating":4.6,"lat":-6.9200,"lng":107.6170,"tags":["jajanan","batagor","legendaris"]},
-  {"id":"k004","nama":"Mie Kocok Bandung Persib","kategori":"Mie","deskripsi":"Mie kocok khas Bandung dengan kuah kaldu sapi gurih dan kikil empuk.","alamat":"Jl. Gardujati No.55, Bandung","harga_per_orang":20000,"jam_operasional":"08:00 - 21:00","rating":4.3,"lat":-6.9130,"lng":107.5960,"tags":["mie","kocok","sapi"]},
-  {"id":"k005","nama":"Rumah Sosis Bandung","kategori":"Western","deskripsi":"Restoran sosis panggang dengan berbagai varian dan suasana outdoor.","alamat":"Jl. Setiabudi No.295, Bandung","harga_per_orang":45000,"jam_operasional":"10:00 - 21:00","rating":4.2,"lat":-6.8720,"lng":107.6070,"tags":["western","sosis","outdoor"]},
-  {"id":"k006","nama":"Surabi Enhaii","kategori":"Jajanan","deskripsi":"Surabi khas Bandung dengan berbagai topping modern dan tradisional.","alamat":"Jl. Kidang Pananjung No.3, Bandung","harga_per_orang":15000,"jam_operasional":"15:00 - 23:00","rating":4.4,"lat":-6.8950,"lng":107.6100,"tags":["jajanan","surabi","tradisional"]},
-  {"id":"k007","nama":"Sate Maranggi Cibungur","kategori":"Sate","deskripsi":"Sate maranggi otentik dengan bumbu kacang dan sambal khas.","alamat":"Jl. Dr. Setiabudi No.135, Bandung","harga_per_orang":40000,"jam_operasional":"10:00 - 22:00","rating":4.5,"lat":-6.8780,"lng":107.6090,"tags":["sate","maranggi","daging"]},
-  {"id":"k008","nama":"Kedai Kopi Aroma","kategori":"Kafe","deskripsi":"Kedai kopi bersejarah sejak 1930, roaster kopi tertua di Bandung.","alamat":"Jl. Banceuy No.51, Bandung","harga_per_orang":30000,"jam_operasional":"07:00 - 17:00","rating":4.7,"lat":-6.9160,"lng":107.6080,"tags":["kafe","kopi","heritage"]},
-  {"id":"k009","nama":"Nasi Goreng Mafia","kategori":"Nasi","deskripsi":"Nasi goreng dengan porsi besar dan bumbu rempah khas Bandung.","alamat":"Jl. Riau No.88, Bandung","harga_per_orang":25000,"jam_operasional":"17:00 - 01:00","rating":4.2,"lat":-6.9060,"lng":107.6190,"tags":["nasi","goreng","malam"]},
-  {"id":"k010","nama":"Kartika Sari","kategori":"Oleh-oleh","deskripsi":"Toko oleh-oleh Bandung terkenal dengan pisang molen dan brownies kukus.","alamat":"Jl. H. Akbar No.4, Bandung","harga_per_orang":50000,"jam_operasional":"07:00 - 22:00","rating":4.6,"lat":-6.8900,"lng":107.6020,"tags":["oleh-oleh","pisang molen","brownies"]},
-  {"id":"k011","nama":"Laksana Sate Padang","kategori":"Sate","deskripsi":"Sate Padang asli dengan kuah kental kuning gurih.","alamat":"Jl. Braga No.42, Bandung","harga_per_orang":30000,"jam_operasional":"10:00 - 21:00","rating":4.3,"lat":-6.9180,"lng":107.6090,"tags":["sate","padang","kuah"]},
-  {"id":"k012","nama":"Nasi Kalong","kategori":"Nasi","deskripsi":"Nasi goreng legendaris yang hanya buka malam di depan Gedung Sate.","alamat":"Depan Gedung Sate, Jl. Diponegoro","harga_per_orang":20000,"jam_operasional":"19:00 - 02:00","rating":4.4,"lat":-6.9020,"lng":107.6180,"tags":["nasi","malam","legendaris"]},
-  {"id":"k013","nama":"Dapur Ciwidey","kategori":"Sunda","deskripsi":"Rumah makan Sunda di area Ciwidey dekat Kawah Putih.","alamat":"Jl. Raya Ciwidey KM 10","harga_per_orang":35000,"jam_operasional":"08:00 - 20:00","rating":4.1,"lat":-7.1300,"lng":107.4000,"tags":["sunda","ciwidey","alam"]},
-  {"id":"k014","nama":"Seblak Jeletet Murni","kategori":"Jajanan","deskripsi":"Seblak pedas khas Bandung dengan level kepedasan 1-10.","alamat":"Jl. Buah Batu No.155, Bandung","harga_per_orang":18000,"jam_operasional":"10:00 - 22:00","rating":4.3,"lat":-6.9350,"lng":107.6260,"tags":["jajanan","seblak","pedas"]},
-  {"id":"k015","nama":"Bebek Garang Coblong","kategori":"Bebek","deskripsi":"Bebek goreng crispy dengan sambal korek dan lalapan.","alamat":"Jl. Dipatiukur No.34, Bandung","harga_per_orang":30000,"jam_operasional":"10:00 - 21:00","rating":4.2,"lat":-6.8920,"lng":107.6170,"tags":["bebek","goreng","sambal"]},
-  {"id":"k016","nama":"Cafe Halaman","kategori":"Kafe","deskripsi":"Kafe aesthetic dengan taman hijau dan menu Western & Indonesia.","alamat":"Jl. Progo No.14, Bandung","harga_per_orang":45000,"jam_operasional":"10:00 - 23:00","rating":4.4,"lat":-6.9060,"lng":107.6110,"tags":["kafe","aesthetic","taman"]},
-  {"id":"k017","nama":"Cuanki Serayu","kategori":"Jajanan","deskripsi":"Cuanki kuah kaldu hangat dengan baso tahu dan siomay khas Bandung.","alamat":"Jl. Serayu No.10, Bandung","harga_per_orang":15000,"jam_operasional":"09:00 - 21:00","rating":4.3,"lat":-6.9100,"lng":107.6000,"tags":["jajanan","cuanki","baso"]},
-  {"id":"k018","nama":"Steak Hotel by Holycow","kategori":"Western","deskripsi":"Steak premium murah dengan konsep hotel unik di Bandung.","alamat":"Jl. Trunojoyo No.14, Bandung","harga_per_orang":55000,"jam_operasional":"11:00 - 22:00","rating":4.5,"lat":-6.9040,"lng":107.6130,"tags":["western","steak","premium"]},
-  {"id":"k019","nama":"Peuyeum Bandung Dua Saudara","kategori":"Oleh-oleh","deskripsi":"Peuyeum (tape singkong) khas Bandung yang terkenal lembut.","alamat":"Jl. Cibaduyut No.88, Bandung","harga_per_orang":10000,"jam_operasional":"08:00 - 18:00","rating":4.1,"lat":-6.9400,"lng":107.6030,"tags":["oleh-oleh","peuyeum","tradisional"]},
-  {"id":"k020","nama":"Geprek Bensu Bandung","kategori":"Ayam","deskripsi":"Ayam geprek dengan sambal level 1-5 dan nasi hangat.","alamat":"Jl. Dipatiukur No.80, Bandung","harga_per_orang":22000,"jam_operasional":"10:00 - 22:00","rating":4.0,"lat":-6.8930,"lng":107.6160,"tags":["ayam","geprek","pedas"]},
-  {"id":"k021","nama":"Roti Gempol","kategori":"Jajanan","deskripsi":"Roti bakar dan kopi susu legendaris di Bandung sejak 1956.","alamat":"Jl. Otto Iskandar Dinata No.295","harga_per_orang":20000,"jam_operasional":"06:00 - 21:00","rating":4.5,"lat":-6.9240,"lng":107.6180,"tags":["jajanan","roti bakar","kopi"]}
+  {
+    "id": "k001",
+    "nama": "Warung Nasi Ampera",
+    "kategori": "Sunda",
+    "deskripsi": "Rumah makan Sunda legendaris dengan nasi timbel dan lauk lengkap.",
+    "alamat": "Jl. Trunojoyo No.62, Bandung",
+    "harga_per_orang": 35000,
+    "jam_operasional": "10:00 - 21:00",
+    "rating": 4.5,
+    "lat": -6.9050,
+    "lng": 107.6120,
+    "tags": [
+      "sunda",
+      "nasi timbel",
+      "tradisional"
+    ]
+  },
+  {
+    "id": "k002",
+    "nama": "Sindang Reret",
+    "kategori": "Sunda",
+    "deskripsi": "Restoran Sunda premium di Lembang dengan suasana alam pegunungan.",
+    "alamat": "Jl. Raya Lembang No.123",
+    "harga_per_orang": 60000,
+    "jam_operasional": "10:00 - 22:00",
+    "rating": 4.4,
+    "lat": -6.8130,
+    "lng": 107.6160,
+    "tags": [
+      "sunda",
+      "premium",
+      "lembang"
+    ]
+  },
+  {
+    "id": "k003",
+    "nama": "Batagor Kingsley",
+    "kategori": "Jajanan",
+    "deskripsi": "Batagor legendaris khas Bandung yang sudah terkenal sejak 1985.",
+    "alamat": "Jl. Burangrang No.12, Bandung",
+    "harga_per_orang": 25000,
+    "jam_operasional": "09:00 - 20:00",
+    "rating": 4.6,
+    "lat": -6.9200,
+    "lng": 107.6170,
+    "tags": [
+      "jajanan",
+      "batagor",
+      "legendaris"
+    ]
+  },
+  {
+    "id": "k004",
+    "nama": "Mie Kocok Bandung Persib",
+    "kategori": "Mie",
+    "deskripsi": "Mie kocok khas Bandung dengan kuah kaldu sapi gurih dan kikil empuk.",
+    "alamat": "Jl. Gardujati No.55, Bandung",
+    "harga_per_orang": 20000,
+    "jam_operasional": "08:00 - 21:00",
+    "rating": 4.3,
+    "lat": -6.9130,
+    "lng": 107.5960,
+    "tags": [
+      "mie",
+      "kocok",
+      "sapi"
+    ]
+  },
+  {
+    "id": "k005",
+    "nama": "Rumah Sosis Bandung",
+    "kategori": "Western",
+    "deskripsi": "Restoran sosis panggang dengan berbagai varian dan suasana outdoor di kawasan Lembang.",
+    "alamat": "Jl. Raya Lembang (Pabrik Tahu Susu Lembang), KBB",
+    "harga_per_orang": 45000,
+    "jam_operasional": "10:00 - 21:00",
+    "rating": 4.2,
+    "lat": -6.8120,
+    "lng": 107.6170,
+    "tags": [
+      "western",
+      "sosis",
+      "outdoor",
+      "lembang"
+    ]
+  },
+  {
+    "id": "k006",
+    "nama": "Surabi Enhaii",
+    "kategori": "Jajanan",
+    "deskripsi": "Surabi khas Bandung dengan berbagai topping modern dan tradisional.",
+    "alamat": "Jl. Kidang Pananjung No.3, Bandung",
+    "harga_per_orang": 15000,
+    "jam_operasional": "15:00 - 23:00",
+    "rating": 4.4,
+    "lat": -6.8950,
+    "lng": 107.6100,
+    "tags": [
+      "jajanan",
+      "surabi",
+      "tradisional"
+    ]
+  },
+  {
+    "id": "k007",
+    "nama": "Sate Maranggi Cibungur",
+    "kategori": "Sate",
+    "deskripsi": "Sate maranggi otentik dengan bumbu kacang dan sambal khas.",
+    "alamat": "Jl. Dr. Setiabudi No.135, Bandung",
+    "harga_per_orang": 40000,
+    "jam_operasional": "10:00 - 22:00",
+    "rating": 4.5,
+    "lat": -6.8780,
+    "lng": 107.6090,
+    "tags": [
+      "sate",
+      "maranggi",
+      "daging"
+    ]
+  },
+  {
+    "id": "k008",
+    "nama": "Kedai Kopi Aroma",
+    "kategori": "Kafe",
+    "deskripsi": "Kedai kopi bersejarah sejak 1930, roaster kopi tertua di Bandung.",
+    "alamat": "Jl. Banceuy No.51, Bandung",
+    "harga_per_orang": 30000,
+    "jam_operasional": "07:00 - 17:00",
+    "rating": 4.7,
+    "lat": -6.9160,
+    "lng": 107.6080,
+    "tags": [
+      "kafe",
+      "kopi",
+      "heritage"
+    ]
+  },
+  {
+    "id": "k009",
+    "nama": "Nasi Goreng Mafia",
+    "kategori": "Nasi",
+    "deskripsi": "Nasi goreng dengan porsi besar dan bumbu rempah khas Bandung.",
+    "alamat": "Jl. Riau No.88, Bandung",
+    "harga_per_orang": 25000,
+    "jam_operasional": "17:00 - 01:00",
+    "rating": 4.2,
+    "lat": -6.9060,
+    "lng": 107.6190,
+    "tags": [
+      "nasi",
+      "goreng",
+      "malam"
+    ]
+  },
+  {
+    "id": "k010",
+    "nama": "Kartika Sari",
+    "kategori": "Oleh-oleh",
+    "deskripsi": "Toko oleh-oleh Bandung terkenal dengan pisang molen dan brownies kukus.",
+    "alamat": "Jl. H. Akbar No.4, Bandung",
+    "harga_per_orang": 50000,
+    "jam_operasional": "07:00 - 22:00",
+    "rating": 4.6,
+    "lat": -6.8900,
+    "lng": 107.6020,
+    "tags": [
+      "oleh-oleh",
+      "pisang molen",
+      "brownies"
+    ]
+  },
+  {
+    "id": "k011",
+    "nama": "Laksana Sate Padang",
+    "kategori": "Sate",
+    "deskripsi": "Sate Padang asli dengan kuah kental kuning gurih.",
+    "alamat": "Jl. Braga No.42, Bandung",
+    "harga_per_orang": 30000,
+    "jam_operasional": "10:00 - 21:00",
+    "rating": 4.3,
+    "lat": -6.9180,
+    "lng": 107.6090,
+    "tags": [
+      "sate",
+      "padang",
+      "kuah"
+    ]
+  },
+  {
+    "id": "k012",
+    "nama": "Nasi Kalong",
+    "kategori": "Nasi",
+    "deskripsi": "Nasi goreng legendaris yang hanya buka malam di depan Gedung Sate.",
+    "alamat": "Depan Gedung Sate, Jl. Diponegoro",
+    "harga_per_orang": 20000,
+    "jam_operasional": "19:00 - 02:00",
+    "rating": 4.4,
+    "lat": -6.9020,
+    "lng": 107.6180,
+    "tags": [
+      "nasi",
+      "malam",
+      "legendaris"
+    ]
+  },
+  {
+    "id": "k013",
+    "nama": "Dapur Ciwidey",
+    "kategori": "Sunda",
+    "deskripsi": "Rumah makan Sunda di area Ciwidey dekat Kawah Putih.",
+    "alamat": "Jl. Raya Ciwidey KM 10",
+    "harga_per_orang": 35000,
+    "jam_operasional": "08:00 - 20:00",
+    "rating": 4.1,
+    "lat": -7.1300,
+    "lng": 107.4000,
+    "tags": [
+      "sunda",
+      "ciwidey",
+      "alam"
+    ]
+  },
+  {
+    "id": "k014",
+    "nama": "Seblak Jeletet Murni",
+    "kategori": "Jajanan",
+    "deskripsi": "Seblak pedas khas Bandung dengan level kepedasan 1-10.",
+    "alamat": "Jl. Buah Batu No.155, Bandung",
+    "harga_per_orang": 18000,
+    "jam_operasional": "10:00 - 22:00",
+    "rating": 4.3,
+    "lat": -6.9350,
+    "lng": 107.6260,
+    "tags": [
+      "jajanan",
+      "seblak",
+      "pedas"
+    ]
+  },
+  {
+    "id": "k015",
+    "nama": "Bebek Garang Coblong",
+    "kategori": "Bebek",
+    "deskripsi": "Bebek goreng crispy dengan sambal korek dan lalapan.",
+    "alamat": "Jl. Dipatiukur No.34, Bandung",
+    "harga_per_orang": 30000,
+    "jam_operasional": "10:00 - 21:00",
+    "rating": 4.2,
+    "lat": -6.8920,
+    "lng": 107.6170,
+    "tags": [
+      "bebek",
+      "goreng",
+      "sambal"
+    ]
+  },
+  {
+    "id": "k016",
+    "nama": "Cafe Halaman",
+    "kategori": "Kafe",
+    "deskripsi": "Kafe aesthetic dengan taman hijau dan menu Western & Indonesia.",
+    "alamat": "Jl. Progo No.14, Bandung",
+    "harga_per_orang": 45000,
+    "jam_operasional": "10:00 - 23:00",
+    "rating": 4.4,
+    "lat": -6.9060,
+    "lng": 107.6110,
+    "tags": [
+      "kafe",
+      "aesthetic",
+      "taman"
+    ]
+  },
+  {
+    "id": "k017",
+    "nama": "Cuanki Serayu",
+    "kategori": "Jajanan",
+    "deskripsi": "Cuanki kuah kaldu hangat dengan baso tahu dan siomay khas Bandung.",
+    "alamat": "Jl. Serayu No.10, Bandung",
+    "harga_per_orang": 15000,
+    "jam_operasional": "09:00 - 21:00",
+    "rating": 4.3,
+    "lat": -6.9100,
+    "lng": 107.6000,
+    "tags": [
+      "jajanan",
+      "cuanki",
+      "baso"
+    ]
+  },
+  {
+    "id": "k018",
+    "nama": "Steak Hotel by Holycow",
+    "kategori": "Western",
+    "deskripsi": "Steak premium murah dengan konsep hotel unik di Bandung.",
+    "alamat": "Jl. Trunojoyo No.14, Bandung",
+    "harga_per_orang": 55000,
+    "jam_operasional": "11:00 - 22:00",
+    "rating": 4.5,
+    "lat": -6.9040,
+    "lng": 107.6130,
+    "tags": [
+      "western",
+      "steak",
+      "premium"
+    ]
+  },
+  {
+    "id": "k019",
+    "nama": "Peuyeum Bandung Dua Saudara",
+    "kategori": "Oleh-oleh",
+    "deskripsi": "Peuyeum (tape singkong) khas Bandung yang terkenal lembut.",
+    "alamat": "Jl. Cibaduyut No.88, Bandung",
+    "harga_per_orang": 10000,
+    "jam_operasional": "08:00 - 18:00",
+    "rating": 4.1,
+    "lat": -6.9400,
+    "lng": 107.6030,
+    "tags": [
+      "oleh-oleh",
+      "peuyeum",
+      "tradisional"
+    ]
+  },
+  {
+    "id": "k020",
+    "nama": "Geprek Bensu Bandung",
+    "kategori": "Ayam",
+    "deskripsi": "Ayam geprek dengan sambal level 1-5 dan nasi hangat.",
+    "alamat": "Jl. Dipatiukur No.80, Bandung",
+    "harga_per_orang": 22000,
+    "jam_operasional": "10:00 - 22:00",
+    "rating": 4.0,
+    "lat": -6.8930,
+    "lng": 107.6160,
+    "tags": [
+      "ayam",
+      "geprek",
+      "pedas"
+    ]
+  },
+  {
+    "id": "k021",
+    "nama": "Roti Gempol",
+    "kategori": "Jajanan",
+    "deskripsi": "Roti bakar dan kopi susu legendaris di Bandung sejak 1956.",
+    "alamat": "Jl. Otto Iskandar Dinata No.295",
+    "harga_per_orang": 20000,
+    "jam_operasional": "06:00 - 21:00",
+    "rating": 4.5,
+    "lat": -6.9240,
+    "lng": 107.6180,
+    "tags": [
+      "jajanan",
+      "roti bakar",
+      "kopi"
+    ]
+  },
+  {
+    "id": "k022",
+    "nama": "Kyomi Space",
+    "kategori": "Kafe",
+    "deskripsi": "Kafe hidden gem bergaya rumah tua Jepang yang tenang, cocok untuk WFC atau bersantai.",
+    "alamat": "Jl. Dago Pojok, Bandung",
+    "harga_per_orang": 45000,
+    "jam_operasional": "10:00 - 22:00",
+    "rating": 4.5,
+    "lat": -6.8720,
+    "lng": 107.6200,
+    "tags": [
+      "kafe",
+      "hidden gem",
+      "jepang",
+      "aesthetic"
+    ]
+  },
+  {
+    "id": "k023",
+    "nama": "Cascata Coffee",
+    "kategori": "Kafe",
+    "deskripsi": "Kafe minimalis berkonsep Korea dengan desain interior yang instagramable.",
+    "alamat": "Jl. Karawitan No.59C, Bandung",
+    "harga_per_orang": 35000,
+    "jam_operasional": "10:00 - 22:00",
+    "rating": 4.3,
+    "lat": -6.9200,
+    "lng": 107.6230,
+    "tags": [
+      "kafe",
+      "korea",
+      "minimalis",
+      "foto"
+    ]
+  },
+  {
+    "id": "k024",
+    "nama": "Kintsugi Coffee Garden",
+    "kategori": "Kafe",
+    "deskripsi": "Kafe full outdoor di taman luas, pet-friendly dengan suasana piknik.",
+    "alamat": "Jl. Setraduta Raya, Bandung",
+    "harga_per_orang": 50000,
+    "jam_operasional": "08:00 - 22:00",
+    "rating": 4.4,
+    "lat": -6.8660,
+    "lng": 107.5860,
+    "tags": [
+      "kafe",
+      "outdoor",
+      "taman",
+      "pet friendly"
+    ]
+  },
+  {
+    "id": "k025",
+    "nama": "Teduh Coffee",
+    "kategori": "Kafe",
+    "deskripsi": "Kafe di bawah rindangnya pohon pinus dengan suasana hutan di tengah kota.",
+    "alamat": "Jl. Pinus Raya, Soekarno-Hatta, Bandung",
+    "harga_per_orang": 40000,
+    "jam_operasional": "09:00 - 23:00",
+    "rating": 4.4,
+    "lat": -6.9350,
+    "lng": 107.5780,
+    "tags": [
+      "kafe",
+      "pinus",
+      "hidden gem",
+      "outdoor"
+    ]
+  },
+  {
+    "id": "k026",
+    "nama": "Tanatap Coffee",
+    "kategori": "Kafe",
+    "deskripsi": "Kafe arsitektur modern yang menyatu dengan alam di area Braga lama.",
+    "alamat": "Jl. Braga No.86, Bandung",
+    "harga_per_orang": 55000,
+    "jam_operasional": "07:00 - 22:00",
+    "rating": 4.6,
+    "lat": -6.9175,
+    "lng": 107.6098,
+    "tags": [
+      "kafe",
+      "braga",
+      "arsitektur",
+      "premium"
+    ]
+  },
+  {
+    "id": "k027",
+    "nama": "Two Hands Full Coffee",
+    "kategori": "Kafe",
+    "deskripsi": "Coffee shop specialty dengan biji kopi single origin dari berbagai daerah Indonesia.",
+    "alamat": "Jl. Progo No.15, Bandung",
+    "harga_per_orang": 40000,
+    "jam_operasional": "08:00 - 22:00",
+    "rating": 4.5,
+    "lat": -6.9058,
+    "lng": 107.6108,
+    "tags": [
+      "kafe",
+      "kopi",
+      "specialty",
+      "single origin"
+    ]
+  },
+  {
+    "id": "k028",
+    "nama": "Warung Misbar",
+    "kategori": "Sunda",
+    "deskripsi": "Rumah makan Sunda hidden gem di gang sempit dengan nasi liwet dan lauk kampung autentik.",
+    "alamat": "Jl. Profesor Eyckman No.12, Bandung",
+    "harga_per_orang": 25000,
+    "jam_operasional": "10:00 - 21:00",
+    "rating": 4.4,
+    "lat": -6.8920,
+    "lng": 107.6040,
+    "tags": [
+      "sunda",
+      "hidden gem",
+      "nasi liwet",
+      "kampung"
+    ]
+  },
+  {
+    "id": "k029",
+    "nama": "Waroeng Setiabudi",
+    "kategori": "Sunda",
+    "deskripsi": "Warung nasi Sunda legendaris di gang kecil dengan menu nasi timbel spesial dan sambal dadak.",
+    "alamat": "Jl. Setiabudhi No.175A, Bandung",
+    "harga_per_orang": 30000,
+    "jam_operasional": "08:00 - 15:00",
+    "rating": 4.6,
+    "lat": -6.8740,
+    "lng": 107.6000,
+    "tags": [
+      "sunda",
+      "hidden gem",
+      "legendaris",
+      "sambal"
+    ]
+  },
+  {
+    "id": "k030",
+    "nama": "Nasi Bancakan",
+    "kategori": "Sunda",
+    "deskripsi": "Nasi prasmanan Sunda dengan pilihan lauk melimpah dibungkus daun pisang.",
+    "alamat": "Jl. Trunojoyo No.67, Bandung",
+    "harga_per_orang": 35000,
+    "jam_operasional": "07:00 - 21:00",
+    "rating": 4.4,
+    "lat": -6.9055,
+    "lng": 107.6125,
+    "tags": [
+      "sunda",
+      "prasmanan",
+      "daun pisang",
+      "tradisional"
+    ]
+  },
+  {
+    "id": "k031",
+    "nama": "Cilok Baper",
+    "kategori": "Jajanan",
+    "deskripsi": "Cilok jumbo dengan isian daging, keju, dan telur puyuh, fenomenal di Bandung.",
+    "alamat": "Jl. Buah Batu No.200, Bandung",
+    "harga_per_orang": 15000,
+    "jam_operasional": "10:00 - 21:00",
+    "rating": 4.2,
+    "lat": -6.9370,
+    "lng": 107.6270,
+    "tags": [
+      "jajanan",
+      "cilok",
+      "street food",
+      "pedas"
+    ]
+  },
+  {
+    "id": "k032",
+    "nama": "Baso Cuanki Serayu Asli",
+    "kategori": "Jajanan",
+    "deskripsi": "Cuanki asli Bandung dengan kuah kaldu sapi segar dan baso aci kenyal.",
+    "alamat": "Jl. Serayu No.22, Bandung",
+    "harga_per_orang": 18000,
+    "jam_operasional": "08:00 - 22:00",
+    "rating": 4.4,
+    "lat": -6.9105,
+    "lng": 107.5995,
+    "tags": [
+      "jajanan",
+      "cuanki",
+      "baso",
+      "street food"
+    ]
+  },
+  {
+    "id": "k033",
+    "nama": "Sierra Cafe & Lounge",
+    "kategori": "Kafe",
+    "deskripsi": "Restoran dan kafe rooftop di Dago Atas dengan pemandangan malam kota Bandung.",
+    "alamat": "Jl. Bukit Pakar Timur No.33, Dago",
+    "harga_per_orang": 65000,
+    "jam_operasional": "11:00 - 23:00",
+    "rating": 4.5,
+    "lat": -6.8540,
+    "lng": 107.6260,
+    "tags": [
+      "kafe",
+      "rooftop",
+      "malam",
+      "pemandangan"
+    ]
+  },
+  {
+    "id": "k034",
+    "nama": "Maja House",
+    "kategori": "Kafe",
+    "deskripsi": "Kafe berkonsep rumah dengan taman vertikal dan menu fusion Indonesia-Western.",
+    "alamat": "Jl. Hegarmanah No.16, Bandung",
+    "harga_per_orang": 55000,
+    "jam_operasional": "10:00 - 22:00",
+    "rating": 4.4,
+    "lat": -6.8850,
+    "lng": 107.6150,
+    "tags": [
+      "kafe",
+      "fusion",
+      "taman",
+      "rumah"
+    ]
+  },
+  {
+    "id": "k035",
+    "nama": "Lawangwangi Creative Space",
+    "kategori": "Kafe",
+    "deskripsi": "Galeri seni sekaligus restoran premium dengan pemandangan lembah dan kebun teh.",
+    "alamat": "Jl. Dago Giri No.99, Bandung",
+    "harga_per_orang": 75000,
+    "jam_operasional": "10:00 - 22:00",
+    "rating": 4.6,
+    "lat": -6.8500,
+    "lng": 107.6220,
+    "tags": [
+      "kafe",
+      "galeri",
+      "premium",
+      "pemandangan"
+    ]
+  },
+  {
+    "id": "k036",
+    "nama": "Amanda Brownies",
+    "kategori": "Oleh-oleh",
+    "deskripsi": "Brownies kukus legendaris Bandung dengan berbagai varian rasa yang wajib dibawa pulang.",
+    "alamat": "Jl. Rancabolang No.29, Bandung",
+    "harga_per_orang": 35000,
+    "jam_operasional": "08:00 - 21:00",
+    "rating": 4.5,
+    "lat": -6.9450,
+    "lng": 107.6350,
+    "tags": [
+      "oleh-oleh",
+      "brownies",
+      "legendaris",
+      "kue"
+    ]
+  },
+  {
+    "id": "k037",
+    "nama": "Sudirman Street Ramen",
+    "kategori": "Jepang",
+    "deskripsi": "Ramen autentik Jepang dengan kuah tonkotsu kental dan topping lengkap.",
+    "alamat": "Jl. Jend. Sudirman No.40, Bandung",
+    "harga_per_orang": 45000,
+    "jam_operasional": "11:00 - 22:00",
+    "rating": 4.3,
+    "lat": -6.9150,
+    "lng": 107.6080,
+    "tags": [
+      "jepang",
+      "ramen",
+      "tonkotsu",
+      "modern"
+    ]
+  },
+  {
+    "id": "k038",
+    "nama": "Two Stories Coffee & Eatery",
+    "kategori": "Kafe",
+    "deskripsi": "Kafe dua lantai bergaya industrial dengan menu brunch dan specialty coffee.",
+    "alamat": "Jl. Gandapura No.61, Bandung",
+    "harga_per_orang": 50000,
+    "jam_operasional": "09:00 - 23:00",
+    "rating": 4.3,
+    "lat": -6.9020,
+    "lng": 107.6200,
+    "tags": [
+      "kafe",
+      "brunch",
+      "industrial",
+      "specialty"
+    ]
+  },
+  {
+    "id": "k039",
+    "nama": "Mie Gacoan Bandung",
+    "kategori": "Mie",
+    "deskripsi": "Mie pedas viral dengan level kepedasan 1-8 dan dimsum krispi populer.",
+    "alamat": "Jl. Dipatiukur No.12, Bandung",
+    "harga_per_orang": 15000,
+    "jam_operasional": "10:00 - 22:00",
+    "rating": 4.1,
+    "lat": -6.8910,
+    "lng": 107.6165,
+    "tags": [
+      "mie",
+      "pedas",
+      "viral",
+      "murah"
+    ]
+  },
+  {
+    "id": "k040",
+    "nama": "Kopi Toko Djawa",
+    "kategori": "Kafe",
+    "deskripsi": "Kedai kopi heritage di Jalan Braga dengan interior kolonial dan kopi nusantara pilihan.",
+    "alamat": "Jl. Braga No.81, Bandung",
+    "harga_per_orang": 35000,
+    "jam_operasional": "07:00 - 22:00",
+    "rating": 4.7,
+    "lat": -6.9177,
+    "lng": 107.6092,
+    "tags": [
+      "kafe",
+      "kopi",
+      "heritage",
+      "braga",
+      "colonial"
+    ]
+  },
+  {
+    "id": "k041",
+    "nama": "The Square Room",
+    "kategori": "Kafe",
+    "deskripsi": "Kafe viral 2025 dengan interior minimalis-futuristik serba kotak dan donat sourdough berbentuk kotak.",
+    "alamat": "Jl. Pajajaran, Cicendo, Bandung",
+    "harga_per_orang": 40000,
+    "jam_operasional": "08:00 - 22:00",
+    "rating": 4.5,
+    "lat": -6.9070,
+    "lng": 107.5940,
+    "tags": ["kafe", "viral 2025", "sourdough", "minimalis"]
+  },
+  {
+    "id": "k042",
+    "nama": "Roti Merak",
+    "kategori": "Jajanan",
+    "deskripsi": "Bakery viral 2025 dengan roti sourdough fresh-baked yang membuat pengunjung rela antre sejak subuh.",
+    "alamat": "Jl. Merak No.4, Bandung",
+    "harga_per_orang": 35000,
+    "jam_operasional": "07:00 - 15:00",
+    "rating": 4.7,
+    "lat": -6.9100,
+    "lng": 107.6040,
+    "tags": ["jajanan", "viral 2025", "bakery", "sourdough"]
+  },
+  {
+    "id": "k043",
+    "nama": "Ceumara",
+    "kategori": "Kafe",
+    "deskripsi": "Kafe hits 2025 dengan fasad terakota estetik, terkenal dengan Ayam Lengket dan Rujak Mangboi.",
+    "alamat": "Jl. Mangga No.26, Bandung",
+    "harga_per_orang": 50000,
+    "jam_operasional": "10:00 - 22:00",
+    "rating": 4.4,
+    "lat": -6.9145,
+    "lng": 107.6050,
+    "tags": ["kafe", "hits 2025", "aesthetic", "fusion"]
+  },
+  {
+    "id": "k044",
+    "nama": "NERD Laboratory",
+    "kategori": "Kafe",
+    "deskripsi": "Kafe retro-industrial di bekas gudang kereta Laswi Heritage, buka hingga dini hari. Lokasi syuting film.",
+    "alamat": "Jl. Sukabumi No.20, Laswi Heritage, Bandung",
+    "harga_per_orang": 45000,
+    "jam_operasional": "10:00 - 02:00",
+    "rating": 4.5,
+    "lat": -6.9220,
+    "lng": 107.6250,
+    "tags": ["kafe", "viral 2025", "retro", "malam", "industrial"]
+  },
+  {
+    "id": "k045",
+    "nama": "996 Council",
+    "kategori": "Western",
+    "deskripsi": "Restoran viral 2025 dengan desain semi-industrial retro, menu andalan nasi brisket yang legendaris.",
+    "alamat": "Jl. Progo No.22, Bandung",
+    "harga_per_orang": 65000,
+    "jam_operasional": "11:00 - 22:00",
+    "rating": 4.5,
+    "lat": -6.9065,
+    "lng": 107.6105,
+    "tags": ["western", "viral 2025", "brisket", "retro"]
+  },
+  {
+    "id": "k046",
+    "nama": "Nyonya Raffles",
+    "kategori": "Asian",
+    "deskripsi": "Restoran baru 2026 dengan arsitektur kayu alami, menyajikan comfort Asian food: beef noodle, nasi hainan, dimsum.",
+    "alamat": "Jl. Prabu Dimuntur No.14, Bandung Wetan",
+    "harga_per_orang": 55000,
+    "jam_operasional": "10:00 - 22:00",
+    "rating": 4.4,
+    "lat": -6.9030,
+    "lng": 107.6215,
+    "tags": ["asian", "baru 2026", "noodle", "dimsum"]
+  },
+  {
+    "id": "k047",
+    "nama": "Sagara Madasari",
+    "kategori": "Seafood",
+    "deskripsi": "Restoran seafood viral 2026 nuansa pantai Pangandaran, lobster dan kepiting bakar jadi andalan.",
+    "alamat": "Jl. Bahureksa No.22, Citarum, Bandung Wetan",
+    "harga_per_orang": 75000,
+    "jam_operasional": "10:00 - 22:00",
+    "rating": 4.4,
+    "lat": -6.9050,
+    "lng": 107.6210,
+    "tags": ["seafood", "viral 2026", "lobster", "bakar"]
+  },
+  {
+    "id": "k048",
+    "nama": "Miss Bee Providore",
+    "kategori": "Kafe",
+    "deskripsi": "Kafe keluarga estetik di Ciumbuleuit dengan rumah kaca, taman bermain anak, dan brunch menu Western.",
+    "alamat": "Jl. Ciumbuleuit No.159, Bandung",
+    "harga_per_orang": 65000,
+    "jam_operasional": "08:00 - 22:00",
+    "rating": 4.5,
+    "lat": -6.8640,
+    "lng": 107.6050,
+    "tags": ["kafe", "keluarga", "brunch", "estetik"]
+  },
+  {
+    "id": "k049",
+    "nama": "Maison de Lauqy",
+    "kategori": "Kafe",
+    "deskripsi": "Kafe instagramable dengan nuansa biru-putih yang elegan dan clean, favorit untuk konten visual 2025.",
+    "alamat": "Jl. Setiabudhi No.130, Bandung",
+    "harga_per_orang": 50000,
+    "jam_operasional": "10:00 - 22:00",
+    "rating": 4.4,
+    "lat": -6.8700,
+    "lng": 107.6010,
+    "tags": ["kafe", "hits 2025", "instagramable", "estetik"]
+  },
+  {
+    "id": "k050",
+    "nama": "Sambel Hejo Natuna",
+    "kategori": "Sunda",
+    "deskripsi": "Rumah makan Sunda dengan cita rasa rumahan autentik yang viral 2025, sambal hejo jadi andalan.",
+    "alamat": "Jl. Natuna No.29, Bandung",
+    "harga_per_orang": 30000,
+    "jam_operasional": "08:00 - 21:00",
+    "rating": 4.5,
+    "lat": -6.9080,
+    "lng": 107.6150,
+    "tags": ["sunda", "viral 2025", "sambal", "rumahan"]
+  }
 ]

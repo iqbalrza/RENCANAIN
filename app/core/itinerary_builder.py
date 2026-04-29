@@ -40,18 +40,40 @@ def filter_hotel_by_budget(hotel_list: list[dict],
 
 def filter_kuliner_by_budget(kuliner_list: list[dict],
                               budget_per_orang_per_meal: int) -> list[dict]:
-    """Filter kuliner yang sesuai budget per orang."""
-    return [k for k in kuliner_list if k["harga_per_orang"] <= budget_per_orang_per_meal]
+    """Filter kuliner yang sesuai budget per orang (dengan margin 20% agar budget lebih terpakai)."""
+    margin = int(budget_per_orang_per_meal * 1.2)  # Beri margin 20%
+    return [k for k in kuliner_list if k["harga_per_orang"] <= margin]
 
 
-def select_hotel(hotel_list: list[dict], budget_per_malam: int) -> dict | None:
-    """Pilih hotel terbaik sesuai budget (rating tertinggi)."""
+def select_hotel(hotel_list: list[dict], budget_per_malam: int,
+                 center_lat: float = None, center_lng: float = None) -> dict | None:
+    """
+    Pilih hotel terbaik sesuai budget dan kedekatan dengan destinasi.
+
+    Prioritas: budget → dekat centroid → harga mendekati budget (maksimalkan) → rating.
+    """
     affordable = filter_hotel_by_budget(hotel_list, budget_per_malam)
     if not affordable:
         # Fallback: hotel termurah
         affordable = sorted(hotel_list, key=lambda h: h["harga_per_malam"])
-        return affordable[0] if affordable else None
-    return max(affordable, key=lambda h: h["rating"])
+        affordable = affordable[:5] if len(affordable) > 5 else affordable
+
+    if not affordable:
+        return None
+
+    if center_lat is not None and center_lng is not None:
+        # Pilih hotel: dekat destinasi + harga mendekati budget (agar sisa minim)
+        return min(
+            affordable,
+            key=lambda h: (
+                haversine(center_lat, center_lng, h["lat"], h["lng"]),
+                -(h["harga_per_malam"] / budget_per_malam),  # Prefer harga mendekati budget
+                -h["rating"],
+            ),
+        )
+
+    # Tanpa lokasi: pilih harga tertinggi (mendekati budget) dengan rating terbaik
+    return max(affordable, key=lambda h: (h["harga_per_malam"], h["rating"]))
 
 
 def build_itinerary(kota_asal: str, durasi: int, jumlah_orang: int,
@@ -70,9 +92,6 @@ def build_itinerary(kota_asal: str, durasi: int, jumlah_orang: int,
     # Budget allocation
     alokasi = allocate_budget(budget)
     per_hari = get_budget_per_day(alokasi, durasi)
-
-    # Select hotel
-    hotel = select_hotel(hotel_all, per_hari["hotel_per_malam"])
 
     # Filter wisata by preferensi
     wisata_filtered = filter_wisata_by_preferensi(wisata_all, preferensi)
@@ -107,10 +126,20 @@ def build_itinerary(kota_asal: str, durasi: int, jumlah_orang: int,
         elif w["harga_tiket"] == 0:
             wisata_final.append(w)
 
+    # Hitung centroid semua destinasi → pilih hotel terdekat
+    if wisata_final:
+        dest_center_lat = sum(w["lat"] for w in wisata_final) / len(wisata_final)
+        dest_center_lng = sum(w["lng"] for w in wisata_final) / len(wisata_final)
+    else:
+        dest_center_lat, dest_center_lng = BANDUNG_LAT, BANDUNG_LNG
+
+    hotel = select_hotel(hotel_all, per_hari["hotel_per_malam"],
+                         dest_center_lat, dest_center_lng)
+
     # Susun itinerary per hari
     itinerary_per_hari = []
     wisata_idx = 0
-    kuliner_idx = 0
+    kuliner_used = set()  # Track kuliner yang sudah dipakai
 
     for day in range(1, durasi + 1):
         day_plan = {
@@ -120,6 +149,7 @@ def build_itinerary(kota_asal: str, durasi: int, jumlah_orang: int,
         }
 
         # Alokasi wisata per hari
+        day_destinations = []
         for _ in range(wisata_per_hari):
             if wisata_idx < len(wisata_final):
                 dest = wisata_final[wisata_idx]
@@ -132,29 +162,45 @@ def build_itinerary(kota_asal: str, durasi: int, jumlah_orang: int,
                     **dest,
                     "jarak_info": jarak_info,
                 })
+                day_destinations.append(dest)
                 wisata_idx += 1
 
-        # Alokasi makan (3 per hari: pagi, siang, malam)
+        # Hitung centroid (titik tengah) destinasi hari ini
+        if day_destinations:
+            center_lat = sum(d["lat"] for d in day_destinations) / len(day_destinations)
+            center_lng = sum(d["lng"] for d in day_destinations) / len(day_destinations)
+        else:
+            center_lat, center_lng = BANDUNG_LAT, BANDUNG_LNG
+
+        # Alokasi kuliner: dekat destinasi + harga mendekati budget (maksimalkan)
         meals = ["Sarapan", "Makan Siang", "Makan Malam"]
         for meal_name in meals:
-            if kuliner_idx < len(kuliner_filtered):
-                k = kuliner_filtered[kuliner_idx]
+            available = [
+                (i, k) for i, k in enumerate(kuliner_filtered)
+                if i not in kuliner_used
+            ]
+            if not available:
+                kuliner_used.clear()
+                available = list(enumerate(kuliner_filtered))
+
+            if available:
+                # Prioritas: dekat destinasi, lalu harga tinggi (agar budget terpakai)
+                available.sort(
+                    key=lambda x: (
+                        haversine(center_lat, center_lng, x[1]["lat"], x[1]["lng"]),
+                        -x[1]["harga_per_orang"],  # Prefer harga lebih tinggi
+                    )
+                )
+                # Ambil dari 3 terdekat, pilih yang paling mahal
+                nearest_3 = available[:3]
+                nearest_3.sort(key=lambda x: -x[1]["harga_per_orang"])
+                idx, k = nearest_3[0]
+                kuliner_used.add(idx)
                 day_plan["kuliner"].append({
                     **k,
                     "waktu_makan": meal_name,
                     "total_biaya": k["harga_per_orang"] * jumlah_orang,
                 })
-                kuliner_idx += 1
-            else:
-                kuliner_idx = 0  # Loop kembali
-                if kuliner_filtered:
-                    k = kuliner_filtered[kuliner_idx]
-                    day_plan["kuliner"].append({
-                        **k,
-                        "waktu_makan": meal_name,
-                        "total_biaya": k["harga_per_orang"] * jumlah_orang,
-                    })
-                    kuliner_idx += 1
 
         itinerary_per_hari.append(day_plan)
 

@@ -11,24 +11,13 @@ def render_form() -> dict | None:
     Render form input dan return data form jika valid.
     Returns None jika form belum disubmit atau invalid.
     """
-    st.markdown("""
-    <div style="
-        background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
-        border-radius: 16px;
-        padding: 32px;
-        margin-bottom: 24px;
-        border: 1px solid rgba(255,255,255,0.08);
-    ">
-        <h2 style="
-            color: #e2e8f0;
-            margin: 0 0 8px 0;
-            font-size: 1.5rem;
-        ">📝 Rencanakan Perjalananmu</h2>
-        <p style="color: #94a3b8; margin: 0; font-size: 0.95rem;">
-            Isi form di bawah untuk mendapatkan itinerary wisata Bandung yang teroptimasi.
-        </p>
-    </div>
-    """, unsafe_allow_html=True)
+    st.markdown(
+        '<div style="background:linear-gradient(135deg,#1a1a2e 0%,#16213e 50%,#0f3460 100%);border-radius:16px;padding:32px;margin-bottom:24px;border:1px solid rgba(255,255,255,0.08);">'
+        '<h2 style="color:#e2e8f0;margin:0 0 8px 0;font-size:1.5rem;">📝 Rencanakan Perjalananmu</h2>'
+        '<p style="color:#94a3b8;margin:0;font-size:0.95rem;">Isi form di bawah untuk mendapatkan itinerary wisata Bandung yang teroptimasi.</p>'
+        '</div>',
+        unsafe_allow_html=True,
+    )
 
     with st.form("trip_form", clear_on_submit=False):
         col1, col2 = st.columns(2)
@@ -78,19 +67,13 @@ def render_form() -> dict | None:
         # Budget info
         if budget and jumlah_orang and durasi:
             per_orang_per_hari = budget / jumlah_orang / durasi
-            st.markdown(f"""
-            <div style="
-                background: rgba(59, 130, 246, 0.1);
-                border: 1px solid rgba(59, 130, 246, 0.3);
-                border-radius: 8px;
-                padding: 12px 16px;
-                margin-top: 8px;
-            ">
-                <span style="color: #93c5fd; font-size: 0.9rem;">
-                    💡 Budget per orang per hari: <strong>Rp {per_orang_per_hari:,.0f}</strong>
-                </span>
-            </div>
-            """.replace(",", "."), unsafe_allow_html=True)
+            budget_text = f"Rp {per_orang_per_hari:,.0f}".replace(",", ".")
+            st.markdown(
+                f'<div style="background:rgba(59,130,246,0.1);border:1px solid rgba(59,130,246,0.3);border-radius:8px;padding:12px 16px;margin-top:8px;">'
+                f'<span style="color:#93c5fd;font-size:0.9rem;">💡 Budget per orang per hari: <strong>{budget_text}</strong></span>'
+                f'</div>',
+                unsafe_allow_html=True,
+            )
 
         st.markdown("<div style='height: 16px'></div>", unsafe_allow_html=True)
 

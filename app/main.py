@@ -14,8 +14,9 @@ from components.form_input import render_form
 from components.itinerary_card import render_itinerary
 from components.budget_summary import render_budget_summary
 from components.map_view import render_map
+from components.transport_card import render_transport_card, get_transport_cost
 from core.itinerary_builder import build_itinerary
-from services.openai_service import generate_narrative
+from services.openai_service import generate_narrative, generate_transport_recommendation
 
 # ── Page Config ──────────────────────────────────────────────
 st.set_page_config(
@@ -122,54 +123,37 @@ st.markdown("""
 
 
 # ── Hero Section ─────────────────────────────────────────────
-st.markdown("""
-<div style="
-    text-align: center;
-    padding: 40px 20px 30px;
-">
-    <h1 style="
-        font-size: 3rem;
-        font-weight: 800;
-        background: linear-gradient(135deg, #60a5fa, #a78bfa, #f472b6);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        margin: 0;
-        line-height: 1.2;
-    ">
-        🌄 BandungTrip AI
-    </h1>
-    <p style="
-        color: #94a3b8;
-        font-size: 1.15rem;
-        margin-top: 12px;
-        max-width: 600px;
-        margin-left: auto;
-        margin-right: auto;
-    ">
-        Rencanakan perjalanan wisata ke Bandung dengan kecerdasan buatan.
-        Itinerary lengkap dalam hitungan detik.
-    </p>
-    <div style="
-        display: flex;
-        justify-content: center;
-        gap: 24px;
-        margin-top: 20px;
-        flex-wrap: wrap;
-    ">
-        <span style="color: #60a5fa; font-size: 0.9rem;">🤖 AI-Powered</span>
-        <span style="color: #a78bfa; font-size: 0.9rem;">🗺️ Rute Optimal</span>
-        <span style="color: #f472b6; font-size: 0.9rem;">💰 Budget Smart</span>
-        <span style="color: #34d399; font-size: 0.9rem;">📍 30+ Destinasi</span>
-    </div>
-</div>
-""", unsafe_allow_html=True)
+st.markdown(
+    '<div style="text-align:center;padding:40px 20px 30px;">'
+    '<h1 style="font-size:3rem;font-weight:800;background:linear-gradient(135deg,#60a5fa,#a78bfa,#f472b6);-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin:0;line-height:1.2;">🌄 BandungTrip AI</h1>'
+    '<p style="color:#94a3b8;font-size:1.15rem;margin-top:12px;max-width:600px;margin-left:auto;margin-right:auto;">Rencanakan perjalanan wisata ke Bandung dengan kecerdasan buatan. Itinerary lengkap dalam hitungan detik.</p>'
+    '<div style="display:flex;justify-content:center;gap:24px;margin-top:20px;flex-wrap:wrap;">'
+    '<span style="color:#60a5fa;font-size:0.9rem;">🤖 AI-Powered</span>'
+    '<span style="color:#a78bfa;font-size:0.9rem;">🗺️ Rute Optimal</span>'
+    '<span style="color:#f472b6;font-size:0.9rem;">💰 Budget Smart</span>'
+    '<span style="color:#34d399;font-size:0.9rem;">📍 30+ Destinasi</span>'
+    '</div></div>',
+    unsafe_allow_html=True,
+)
 
+
+# ── Session State Init ───────────────────────────────────────
+if "itinerary" not in st.session_state:
+    st.session_state.itinerary = None
+if "narrative" not in st.session_state:
+    st.session_state.narrative = None
+if "transport_rec" not in st.session_state:
+    st.session_state.transport_rec = None
+if "transport_selected" not in st.session_state:
+    st.session_state.transport_selected = 0
+if "form_data" not in st.session_state:
+    st.session_state.form_data = None
 
 # ── Form Input ───────────────────────────────────────────────
 form_data = render_form()
 
 
-# ── Process & Render Results ─────────────────────────────────
+# ── Process: hanya saat form di-submit ───────────────────────
 if form_data:
     with st.spinner("🤖 Memproses itinerary..."):
         try:
@@ -181,52 +165,98 @@ if form_data:
                 budget=form_data["budget"],
                 preferensi=form_data["preferensi"],
             )
+            st.session_state.itinerary = itinerary
+            st.session_state.form_data = form_data
 
-            st.markdown("<hr>", unsafe_allow_html=True)
+            # Generate transport recommendation (LLM)
+            transport_rec = generate_transport_recommendation(
+                kota_asal=form_data["kota_asal"],
+                jumlah_orang=form_data["jumlah_orang"],
+                budget=form_data["budget"],
+            )
+            st.session_state.transport_rec = transport_rec
 
-            # Tabs untuk hasil
-            tab1, tab2, tab3 = st.tabs([
-                "📋 Itinerary",
-                "🗺️ Peta Rute",
-                "💰 Budget",
-            ])
-
-            with tab1:
-                render_itinerary(itinerary)
-
-                # Narrative (if OpenAI available)
-                narrative = generate_narrative(itinerary)
-                if narrative:
-                    with st.expander("📝 Narasi Perjalanan (AI Generated)", expanded=False):
-                        st.markdown(narrative)
-
-            with tab2:
-                render_map(itinerary)
-
-            with tab3:
-                render_budget_summary(
-                    itinerary["estimasi_biaya"],
-                    itinerary["alokasi_budget"],
-                )
+            # Generate narrative
+            narrative = generate_narrative(itinerary)
+            st.session_state.narrative = narrative
 
         except Exception as e:
             st.error(f"❌ Terjadi kesalahan: {str(e)}")
             st.exception(e)
 
 
+# ── Render Results: selalu tampil selama ada data ────────────
+if st.session_state.itinerary:
+    itinerary = st.session_state.itinerary
+
+    st.markdown("<hr>", unsafe_allow_html=True)
+
+    # Tabs untuk hasil
+    tab1, tab2, tab3 = st.tabs([
+        "📋 Itinerary",
+        "🗺️ Peta Rute",
+        "💰 Budget",
+    ])
+
+    with tab1:
+        # Transport card (di awal)
+        if st.session_state.transport_rec:
+            transport_options = st.session_state.transport_rec
+            fd = st.session_state.form_data or {}
+            jumlah_orang = fd.get("jumlah_orang", 2)
+            kota_asal = fd.get("kota_asal", "")
+
+            # Selectbox untuk pilih moda
+            option_labels = [
+                f"{opt.get('emoji', '')} {opt.get('moda', '')} — {opt.get('durasi', '')}"
+                for opt in transport_options
+            ]
+            selected = st.selectbox(
+                "🚆 Pilih Moda Transportasi",
+                options=range(len(option_labels)),
+                format_func=lambda x: option_labels[x],
+                index=st.session_state.transport_selected,
+                key="transport_select",
+            )
+            st.session_state.transport_selected = selected
+
+            render_transport_card(kota_asal, transport_options, jumlah_orang, selected)
+            st.markdown('<hr style="border-color:rgba(255,255,255,0.06);margin:24px 0;">', unsafe_allow_html=True)
+
+        render_itinerary(itinerary)
+
+        # Narrative
+        if st.session_state.narrative:
+            with st.expander("📝 Narasi Perjalanan (AI Generated)", expanded=False):
+                st.markdown(st.session_state.narrative)
+
+    with tab2:
+        render_map(itinerary)
+
+    with tab3:
+        # Hitung transport cost dari opsi yang dipilih
+        transport_cost = 0
+        if st.session_state.transport_rec and st.session_state.form_data:
+            transport_cost = get_transport_cost(
+                st.session_state.transport_rec,
+                st.session_state.transport_selected,
+                st.session_state.form_data.get("jumlah_orang", 2),
+            )
+
+        # Update estimasi biaya dengan transport cost
+        estimasi = dict(itinerary["estimasi_biaya"])
+        estimasi["transport"] = transport_cost
+        estimasi["total"] = estimasi["hotel"] + estimasi["wisata"] + estimasi["kuliner"] + transport_cost
+        estimasi["sisa_budget"] = itinerary["alokasi_budget"]["total"] - estimasi["total"]
+
+        render_budget_summary(estimasi, itinerary["alokasi_budget"])
+
+
 # ── Footer ───────────────────────────────────────────────────
-st.markdown("""
-<div style="
-    text-align: center;
-    padding: 40px 20px;
-    margin-top: 60px;
-    border-top: 1px solid rgba(255,255,255,0.06);
-">
-    <p style="color: #475569; font-size: 0.85rem; margin: 0;">
-        BandungTrip AI v1.0 · Microsoft Elevate Hackathon 2025
-    </p>
-    <p style="color: #334155; font-size: 0.75rem; margin-top: 4px;">
-        Powered by Azure OpenAI · Azure AI Search · Azure Maps
-    </p>
-</div>
-""", unsafe_allow_html=True)
+st.markdown(
+    '<div style="text-align:center;padding:40px 20px;margin-top:60px;border-top:1px solid rgba(255,255,255,0.06);">'
+    '<p style="color:#475569;font-size:0.85rem;margin:0;">BandungTrip AI v1.0 · Microsoft Elevate Hackathon 2025</p>'
+    '<p style="color:#334155;font-size:0.75rem;margin-top:4px;">Powered by Azure OpenAI · Azure AI Search · Azure Maps</p>'
+    '</div>',
+    unsafe_allow_html=True,
+)

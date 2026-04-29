@@ -166,3 +166,100 @@ def _generate_local_narrative(itinerary_data: dict) -> str:
         lines.append("")
 
     return "\n".join(lines)
+
+
+def generate_transport_recommendation(kota_asal: str, jumlah_orang: int, budget: int) -> list[dict]:
+    """
+    Generate rekomendasi transportasi dari kota asal ke Bandung.
+
+    Returns list of dict, masing-masing berisi:
+        moda, emoji, harga_min, harga_max, durasi, keterangan, tujuan_bandung
+    """
+    if _client and _deployment:
+        try:
+            system_prompt = """Kamu adalah asisten perjalanan Indonesia yang ahli dalam transportasi antar kota.
+Berikan rekomendasi transportasi dari kota asal ke Bandung dalam format JSON.
+
+FORMAT OUTPUT (HARUS valid JSON array):
+[
+  {
+    "moda": "Kereta Api",
+    "emoji": "🚆",
+    "harga_min": 80000,
+    "harga_max": 150000,
+    "durasi": "2-3 jam",
+    "keterangan": "Argo Parahyangan dari Gambir",
+    "tujuan_bandung": "Stasiun Bandung"
+  }
+]
+
+ATURAN:
+- Berikan 2-4 opsi transportasi
+- harga_min dan harga_max dalam angka (bukan string), dalam Rupiah per orang
+- Urutkan dari yang paling direkomendasikan
+- HANYA output JSON, tanpa penjelasan tambahan"""
+
+            user_msg = (
+                f"Rekomendasikan transportasi dari {kota_asal} ke Bandung "
+                f"untuk {jumlah_orang} orang dengan total budget perjalanan Rp {budget:,}."
+            )
+
+            response = _client.chat.completions.create(
+                model=_deployment,
+                messages=[
+                    {"role": "system", "content": system_prompt},
+                    {"role": "user", "content": user_msg},
+                ],
+                temperature=0.5,
+                max_tokens=600,
+            )
+            raw = response.choices[0].message.content.strip()
+            # Bersihkan jika ada markdown code block
+            if raw.startswith("```"):
+                raw = raw.split("\n", 1)[1]
+                raw = raw.rsplit("```", 1)[0]
+            result = json.loads(raw)
+            if isinstance(result, list) and len(result) > 0:
+                return result
+        except Exception as e:
+            logger.error(f"OpenAI transport recommendation failed: {e}")
+
+    # Fallback lokal
+    return _generate_local_transport(kota_asal)
+
+
+def _generate_local_transport(kota_asal: str) -> list[dict]:
+    """Generate rekomendasi transportasi fallback tanpa LLM."""
+    kota = kota_asal.strip().lower()
+
+    if kota in ["jakarta", "bekasi", "tangerang", "depok", "bogor"]:
+        return [
+            {"moda": "Kereta Api", "emoji": "🚆", "harga_min": 80000, "harga_max": 150000,
+             "durasi": "2-3 jam", "keterangan": "Argo Parahyangan / Pangandaran", "tujuan_bandung": "Stasiun Bandung"},
+            {"moda": "Bus AKAP", "emoji": "🚌", "harga_min": 60000, "harga_max": 120000,
+             "durasi": "3-4 jam", "keterangan": "Primajasa / X-Trans", "tujuan_bandung": "Terminal Leuwi Panjang"},
+            {"moda": "Travel", "emoji": "🚐", "harga_min": 100000, "harga_max": 150000,
+             "durasi": "3-4 jam", "keterangan": "Door-to-door, Cititrans / Baraya", "tujuan_bandung": "Berbagai titik"},
+            {"moda": "Mobil Pribadi", "emoji": "🚗", "harga_min": 100000, "harga_max": 200000,
+             "durasi": "2-4 jam", "keterangan": "Via Tol Cipularang, biaya tol ± Rp 100.000", "tujuan_bandung": "-"},
+        ]
+    elif kota in ["surabaya", "malang", "semarang", "yogyakarta", "solo"]:
+        return [
+            {"moda": "Pesawat", "emoji": "✈️", "harga_min": 500000, "harga_max": 1200000,
+             "durasi": "1-2 jam", "keterangan": "Direct flight ke Husein Sastranegara", "tujuan_bandung": "Bandara Husein"},
+            {"moda": "Kereta Api", "emoji": "🚆", "harga_min": 200000, "harga_max": 450000,
+             "durasi": "6-10 jam", "keterangan": "Eksekutif / Bisnis", "tujuan_bandung": "Stasiun Bandung"},
+            {"moda": "Bus AKAP", "emoji": "🚌", "harga_min": 150000, "harga_max": 300000,
+             "durasi": "8-14 jam", "keterangan": "Bus malam, istirahat di bus", "tujuan_bandung": "Terminal Leuwi Panjang"},
+        ]
+    else:
+        return [
+            {"moda": "Pesawat", "emoji": "✈️", "harga_min": 500000, "harga_max": 1500000,
+             "durasi": "1-3 jam", "keterangan": "Direct / connecting ke Husein Sastranegara", "tujuan_bandung": "Bandara Husein"},
+            {"moda": "Kereta + Sambung", "emoji": "🚆", "harga_min": 200000, "harga_max": 500000,
+             "durasi": "Bervariasi", "keterangan": "Via Jakarta, lanjut ke Bandung", "tujuan_bandung": "Stasiun Bandung"},
+            {"moda": "Bus AKAP", "emoji": "🚌", "harga_min": 150000, "harga_max": 400000,
+             "durasi": "Bervariasi", "keterangan": "Tergantung jarak", "tujuan_bandung": "Terminal Leuwi Panjang"},
+        ]
+
+
