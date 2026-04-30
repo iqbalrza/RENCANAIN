@@ -20,8 +20,7 @@ from services.openai_service import generate_narrative, generate_transport_recom
 
 # ── Page Config ──────────────────────────────────────────────
 st.set_page_config(
-    page_title="BandungTrip AI — Perencanaan Wisata Cerdas",
-    page_icon="🌄",
+    page_title="RENCANAIN — Perencanaan Wisata Cerdas",
     layout="wide",
     initial_sidebar_state="collapsed",
 )
@@ -125,8 +124,8 @@ st.markdown("""
 # ── Hero Section ─────────────────────────────────────────────
 st.markdown(
     '<div style="text-align:center;padding:40px 20px 30px;">'
-    '<h1 style="font-size:3rem;font-weight:800;background:linear-gradient(135deg,#60a5fa,#a78bfa,#f472b6);-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin:0;line-height:1.2;">🌄 BandungTrip AI</h1>'
-    '<p style="color:#94a3b8;font-size:1.15rem;margin-top:12px;max-width:600px;margin-left:auto;margin-right:auto;">Rencanakan perjalanan wisata ke Bandung dengan kecerdasan buatan. Itinerary lengkap dalam hitungan detik.</p>'
+    '<h1 style="font-size:3rem;font-weight:800;background:linear-gradient(135deg,#60a5fa,#a78bfa,#f472b6);-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin:0;line-height:1.2;">Rencanain</h1>'
+    '<p style="color:#94a3b8;font-size:1.15rem;margin-top:12px;max-width:600px;margin-left:auto;margin-right:auto;">Rencanakan perjalanan wisata dengan kecerdasan buatan. Itinerary lengkap dalam hitungan detik.</p>'
     '<div style="display:flex;justify-content:center;gap:24px;margin-top:20px;flex-wrap:wrap;">'
     '<span style="color:#60a5fa;font-size:0.9rem;">🤖 AI-Powered</span>'
     '<span style="color:#a78bfa;font-size:0.9rem;">🗺️ Rute Optimal</span>'
