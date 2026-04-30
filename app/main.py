@@ -125,6 +125,9 @@ st.markdown("""
 st.markdown(
     '<div style="text-align:center;padding:40px 20px 30px;">'
     '<h1 style="font-size:3rem;font-weight:800;background:linear-gradient(135deg,#60a5fa,#a78bfa,#f472b6);-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin:0;line-height:1.2;">Rencanain</h1>'
+    '<div style="display:inline-flex;align-items:center;gap:6px;background:rgba(251,191,36,0.12);border:1px solid rgba(251,191,36,0.35);color:#fbbf24;padding:4px 12px;border-radius:20px;font-size:0.8rem;font-weight:500;margin-top:10px;">'
+    '⚠️ Demo AI · Hanya untuk keperluan demonstrasi'
+    '</div>'
     '<p style="color:#94a3b8;font-size:1.15rem;margin-top:12px;max-width:600px;margin-left:auto;margin-right:auto;">Rencanakan perjalanan wisata dengan kecerdasan buatan. Itinerary lengkap dalam hitungan detik.</p>'
     '<div style="display:flex;justify-content:center;gap:24px;margin-top:20px;flex-wrap:wrap;">'
     '<span style="color:#60a5fa;font-size:0.9rem;">🤖 AI-Powered</span>'
